@@ -1,0 +1,27 @@
+Requirements 
+1.1 Functional Requirements
+The Smart Library Management System (SLMS) intends to provide the following functions:
+Member Functions
+1.	Login using username and password.
+2.	View available books.
+3.	Borrow books (maximum of 5 books at a time).
+4.	Return borrowed books.
+5.	Reserve books that are currently borrowed.
+6.	View book status (Available, Borrowed, Reserved).
+Librarian Functions
+1.	Add new books to the system.
+2.	View all books.
+3.	Manage book records.
+Administrator Functions
+1.	Set borrowing limits.
+2.	Manage system settings.
+
+1.2 Non-Functional Requirements
+1.	The system must be implemented in C++.
+2.	The system must follow Object-Oriented principles.
+3.	The system must demonstrate:
+o	Inheritance
+o	Encapsulation
+o	Polymorphism
+4.	The system must run in a console environment.
+5.	The system must respond quickly to borrow and reserve actions.
