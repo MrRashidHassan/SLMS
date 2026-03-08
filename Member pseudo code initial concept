@@ -1,0 +1,4 @@
+CLASS Member
+    borrowBook()
+    returnBook()
+END CLASS
