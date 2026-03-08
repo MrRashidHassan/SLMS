@@ -1,0 +1,10 @@
+CLASS User
+    username
+    password
+
+    METHOD login(inputUser, inputPass)
+        IF inputUser == username AND inputPass == password
+            RETURN true
+        ELSE
+            RETURN false
+END CLASS
