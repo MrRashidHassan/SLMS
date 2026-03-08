@@ -1,0 +1,8 @@
+START PROGRAM
+
+show login
+
+if member
+    show member menu
+
+END PROGRAM
