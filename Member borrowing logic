@@ -1,0 +1,16 @@
+CLASS Member EXTENDS User
+
+    borrowedBooks
+    MAX_BORROW = 5
+
+    METHOD borrow(book)
+        IF borrowedBooks < MAX_BORROW
+            CALL book.borrowBook()
+            ADD book to borrowedBooks
+        ELSE
+            DISPLAY limit reached
+
+    METHOD returnBook(book)
+        CALL book.returnBook()
+
+END CLASS
