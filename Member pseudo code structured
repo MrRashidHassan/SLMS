@@ -1,0 +1,9 @@
+CLASS Member EXTENDS User
+
+    METHOD borrowBook(book)
+
+    METHOD returnBook(book)
+
+    METHOD reserveBook(book)
+
+END CLASS
