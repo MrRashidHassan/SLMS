@@ -1,0 +1,14 @@
+START PROGRAM
+
+DISPLAY login options
+1 Member
+2 Librarian
+3 Admin
+
+GET user choice
+
+IF Member
+    LOGIN
+    SHOW member menu
+
+END PROGRAM
