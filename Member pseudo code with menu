@@ -1,0 +1,18 @@
+CLASS Member EXTENDS User
+
+    borrowedBooks
+    MAX_BORROW = 5
+
+    METHOD borrow(book)
+
+    METHOD returnBook(book)
+
+    METHOD reserve(book)
+
+    OVERRIDE menu()
+        DISPLAY
+            1 View Books
+            2 Borrow Book
+            3 Return Book
+            4 Reserve Book
+END CLASS
