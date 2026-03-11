@@ -1,0 +1,17 @@
+START PROGRAM
+
+CREATE book collection
+
+CREATE users
+
+LOOP system
+
+    DISPLAY login menu
+
+    IF login success
+
+        LOOP user menu
+            show options
+            perform action
+
+END LOOP
