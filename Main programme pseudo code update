@@ -1,0 +1,12 @@
+START PROGRAM
+
+CREATE book list
+
+CREATE member account
+
+DISPLAY login screen
+
+IF login successful
+    SHOW menu
+
+END PROGRAM
