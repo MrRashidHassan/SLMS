@@ -1,0 +1,21 @@
+CLASS Member EXTENDS User
+
+    PRIVATE borrowedBooks
+    CONSTANT MAX_BORROW = 5
+
+    METHOD borrow(book)
+        IF borrowedBooks < MAX_BORROW
+            CALL book.borrowBook()
+            ADD book to borrowed list
+        ELSE
+            DISPLAY error
+
+    METHOD returnBook(book)
+        CALL book.returnBook()
+
+    METHOD reserve(book)
+        CALL book.reserveBook()
+
+    OVERRIDE METHOD menu()
+        DISPLAY member options
+END CLASS
