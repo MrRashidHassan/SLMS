@@ -1,0 +1,17 @@
+START PROGRAM
+
+CREATE books
+
+CREATE users
+
+DECLARE User pointer currentUser
+
+LOGIN user
+
+SET currentUser depending on role
+
+CALL currentUser.menu()
+
+PROCESS user choice
+
+END PROGRAM
