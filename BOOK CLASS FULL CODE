@@ -1,0 +1,22 @@
+CONSTRUCTOR(id, title, author)
+    SET id
+    SET title
+    SET author
+    SET status = "Available"
+
+METHOD borrowBook()
+    IF status == "Available"
+        SET status = "Borrowed"
+        RETURN true
+    ELSE
+        RETURN false
+
+METHOD returnBook()
+    SET status = "Available"
+
+METHOD reserveBook()
+    IF status == "Borrowed"
+        SET status = "Reserved"
+        RETURN true
+    ELSE
+        RETURN false
