@@ -1,0 +1,13 @@
+CLASS Member EXTENDS User
+
+    borrowedBooks
+
+    METHOD borrow(book)
+
+    METHOD return(book)
+
+    METHOD reserve(book)
+
+    OVERRIDE menu()
+
+END CLASS
