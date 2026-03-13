@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+private:
+    int id;
+    string title;
+    string author;
+
+public:
+    Book(int i, string t, string a) {
+        id = i;
+        title = t;
+        author = a;
+    }
+
+    void display() {
+        cout << "ID: " << id << " Title: " << title << " Author: " << author << endl;
+    }
+};
+
+int main() {
+
+    Book book1(1, "1984", "George Orwell");
+
+    book1.display();
+
+    return 0;
+}
