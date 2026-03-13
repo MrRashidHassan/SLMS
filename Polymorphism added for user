@@ -1,0 +1,10 @@
+CLASS User
+
+    username
+    password
+
+    METHOD login()
+
+    VIRTUAL METHOD menu()
+
+END CLASS
