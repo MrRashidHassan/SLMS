@@ -1,0 +1,11 @@
+CLASS User
+    PRIVATE username
+    PRIVATE password
+
+    CONSTRUCTOR(username,password)
+
+    METHOD login(inputUser,inputPass)
+        RETURN true if credentials match
+
+    VIRTUAL METHOD menu()
+END CLASS
