@@ -1,0 +1,23 @@
+START PROGRAM
+
+CREATE book list
+
+CREATE Member, Librarian, Administrator
+
+WHILE system running
+
+    DISPLAY login menu
+
+    VALIDATE login
+
+    ASSIGN currentUser pointer
+
+    LOOP user menu
+
+        CALL currentUser.menu()
+
+        PROCESS action
+
+END LOOP
+
+END PROGRAM
