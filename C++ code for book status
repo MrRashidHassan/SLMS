@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+private:
+    int id;
+    string title;
+    string author;
+    string status;
+
+public:
+    Book(int i, string t, string a) {
+        id = i;
+        title = t;
+        author = a;
+        status = "Available";
+    }
+
+    void display() {
+        cout << id << " " << title << " " << author << " Status: " << status << endl;
+    }
+
+    void borrowBook() {
+        if (status == "Available")
+            status = "Borrowed";
+    }
+};
+
+int main() {
+
+    Book b1(1,"1984","George Orwell");
+
+    b1.display();
+    b1.borrowBook();
+    b1.display();
+
+}
