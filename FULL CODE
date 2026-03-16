@@ -1,0 +1,279 @@
+#include <iostream>  
+#include <vector>     
+#include <string>     
+
+using namespace std;
+
+
+class Book {
+private:
+    int id;                 
+    string title;           
+    string author;          
+    string status;          
+    string reservedBy;      
+
+public:
+
+    Book(int i, string t, string a)
+        : id(i), title(t), author(a), status("Available") {
+    }
+
+    int getID() const { return id; }
+    string getTitle() const { return title; }
+    string getAuthor() const { return author; }
+    string getStatus() const { return status; }
+
+    // Display book details
+    void display() const {
+        cout << "ID: " << id
+            << " | Title: " << title
+            << " | Author: " << author
+            << " | Status: " << status << endl;
+    }
+
+    bool borrowBook() {
+        if (status == "Available") {
+            status = "Borrowed";   
+            return true;           
+        }
+        return false;              
+    }
+
+    void returnBook() {
+        status = "Available";
+    }
+
+    bool reserveBook(string memberName) {
+        if (status == "Borrowed") {
+            status = "Reserved";
+            reservedBy = memberName;
+            return true;
+        }
+        return false;
+    }
+};
+
+
+class User {
+protected:
+    string username;
+    string password;
+
+public:
+    User(string u, string p) : username(u), password(p) {}
+
+    virtual void menu() = 0;
+    bool login(string u, string p) {
+        return (u == username && p == password);
+    }
+};
+
+
+class Member : public User {
+private:
+    vector<int> borrowedBooks;   
+    const int MAX_BORROW = 5;    
+
+public:
+    Member(string u, string p) : User(u, p) {}
+
+    void borrow(Book& book) {
+
+        if (borrowedBooks.size() >= MAX_BORROW) {
+            cout << "Borrow limit reached (Max 5 books).\n";
+            return;
+        }
+
+        if (book.borrowBook()) {
+            borrowedBooks.push_back(book.getID()); 
+            cout << "Book borrowed successfully.\n";
+        }
+        else {
+            cout << "Book not available.\n";
+        }
+    }
+
+    void returnBook(Book& book) {
+        book.returnBook();
+        cout << "Book returned.\n";
+    }
+
+    void reserve(Book& book) {
+        if (book.reserveBook(username)) {
+            cout << "Book reserved successfully.\n";
+        }
+        else {
+            cout << "Cannot reserve this book.\n";
+        }
+    }
+
+    void menu() override {
+        cout << "\n=== MEMBER MENU ===\n";
+        cout << "1. View Books\n";
+        cout << "2. Borrow Book\n";
+        cout << "3. Return Book\n";
+        cout << "4. Reserve Book\n";
+        cout << "0. Logout\n";
+    }
+};
+
+
+class Librarian : public User {
+public:
+    Librarian(string u, string p) : User(u, p) {}
+
+    void addBook(vector<Book>& books) {
+
+        int id;
+        string title, author;
+
+        cout << "Enter Book ID: ";
+        cin >> id;
+        cin.ignore();  
+
+        cout << "Enter Title: ";
+        getline(cin, title);
+
+        cout << "Enter Author: ";
+        getline(cin, author);
+
+        // 
+        books.push_back(Book(id, title, author));
+        cout << "Book added successfully.\n";
+    }
+
+    void menu() override {
+        cout << "\n=== LIBRARIAN MENU ===\n";
+        cout << "1. View Books\n";
+        cout << "2. Add Book\n";
+        cout << "0. Logout\n";
+    }
+};
+
+
+class Administrator : public User {
+private:
+    int borrowLimit = 5;  
+
+public:
+    Administrator(string u, string p) : User(u, p) {}
+
+    void setBorrowLimit() {
+        cout << "Enter new borrow limit: ";
+        cin >> borrowLimit;
+        cout << "Borrow limit updated.\n";
+    }
+
+    void menu() override {
+        cout << "\n=== ADMIN MENU ===\n";
+        cout << "1. Set Borrow Limit\n";
+        cout << "0. Logout\n";
+    }
+};
+
+
+int main() {
+
+    vector<Book> books;
+    books.push_back(Book(1, "1984", "George Orwell"));
+    books.push_back(Book(2, "The Hobbit", "J.R.R. Tolkien"));
+    books.push_back(Book(3, "C++ Programming", "Bjarne Stroustrup"));
+
+    Member member("member", "1234");
+    Librarian librarian("librarian", "1234");
+    Administrator admin("admin", "1234");
+
+    while (true) {
+
+        cout << "\n=== SMART LIBRARY SYSTEM ===\n";
+        cout << "Login as:\n";
+        cout << "1. Member\n";
+        cout << "2. Librarian\n";
+        cout << "3. Administrator\n";
+        cout << "0. Exit\n";
+
+        int choice;
+        cin >> choice;
+
+        if (choice == 0) break;
+
+        string username, password;
+        cout << "Username: ";
+        cin >> username;
+        cout << "Password: ";
+        cin >> password;
+
+        
+        User* currentUser = nullptr;
+
+        if (choice == 1 && member.login(username, password))
+            currentUser = &member;
+        else if (choice == 2 && librarian.login(username, password))
+            currentUser = &librarian;
+        else if (choice == 3 && admin.login(username, password))
+            currentUser = &admin;
+        else {
+            cout << "Invalid login.\n";
+            continue;
+        }
+
+        int option;
+        do {
+
+            currentUser->menu();
+            cin >> option;
+
+            if (choice == 1) {
+                Member* m = dynamic_cast<Member*>(currentUser);
+
+                if (option == 1)
+                    for (auto& b : books) b.display();
+                else if (option == 2) {
+                    int id;
+                    cout << "Enter Book ID: ";
+                    cin >> id;
+                    for (auto& b : books)
+                        if (b.getID() == id)
+                            m->borrow(b);
+                }
+                else if (option == 3) {
+                    int id;
+                    cout << "Enter Book ID: ";
+                    cin >> id;
+                    for (auto& b : books)
+                        if (b.getID() == id)
+                            m->returnBook(b);
+                }
+                else if (option == 4) {
+                    int id;
+                    cout << "Enter Book ID: ";
+                    cin >> id;
+                    for (auto& b : books)
+                        if (b.getID() == id)
+                            m->reserve(b);
+                }
+            }
+
+            else if (choice == 2) {
+                Librarian* l = dynamic_cast<Librarian*>(currentUser);
+
+                if (option == 1)
+                    for (auto& b : books) b.display();
+                else if (option == 2)
+                    l->addBook(books);
+            }
+
+            else if (choice == 3) {
+                Administrator* a = dynamic_cast<Administrator*>(currentUser);
+
+                if (option == 1)
+                    a->setBorrowLimit();
+            }
+
+        } while (option != 0);
+    }
+
+    cout << "System closed.\n";
+    return 0;
+}
