@@ -1,0 +1,32 @@
+Test 1: Successful Login
+I tested the login functionality by entering correct member credentials. When I entered the correct username and password, the system successfully displayed the member menu. This confirmed that valid users are able to access the system correctly.
+
+Test 2: Invalid Login
+I tested the system using incorrect login details. When I entered an invalid username or password, the system rejected the login attempt and displayed an “Invalid login” message. This showed that the system correctly prevents unauthorised access.
+
+Test 3: Borrow Available Book
+I tested borrowing functionality by selecting a book that was marked as “Available.” The system allowed me to borrow the book and updated its status to “Borrowed.” This confirmed that the borrowing process works as expected under normal conditions.
+
+Test 4: Borrow Limit Reached
+I tested the borrowing limit by attempting to borrow more than five books. After borrowing five books, the system prevented me from borrowing any additional books and displayed a message indicating that the limit had been reached. This confirmed that the system correctly enforces the borrowing constraint.
+
+Test 5: Borrow Unavailable Book
+I attempted to borrow a book that had already been borrowed. The system prevented the action and displayed a message stating that the book was not available. This showed that the system handles unavailable books correctly.
+
+Test 6: Return Book
+I tested returning a book by returning a borrowed book. The system updated the book’s status back to “Available” and confirmed the return. This ensured that returned books can be reused within the system.
+
+Test 7: Reserve Borrowed Book
+I tested the reservation feature by attempting to reserve a book that was currently borrowed. The system successfully allowed the reservation and updated the book’s status to “Reserved.” This confirmed that reservations work correctly for unavailable books.
+
+Test 8: Reserve Available Book
+I attempted to reserve a book that was already available. The system rejected the request and displayed an appropriate message. This ensured that reservations are only allowed when the book is unavailable.
+
+Test 9: Add Book (Librarian)
+I tested the librarian functionality by adding a new book to the system. After entering the book ID, title, and author, the system successfully added the book to the collection. This confirmed that book management features work correctly.
+
+Test 10: Change Borrow Limit (Administrator)
+I tested the administrator functionality by changing the borrowing limit. After entering a new value, the system updated the limit and confirmed the change. This showed that administrative controls are functioning properly.
+
+Conclusion
+Through these tests, I verified that the system performs correctly across all key features, including login, borrowing, returning, reserving, and administrative functions. I also confirmed that the system handles invalid inputs and enforces constraints effectively, ensuring that it meets its intended requirements.
