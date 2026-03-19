@@ -1,0 +1,75 @@
+The purpose of this test strategy is to ensure that the Smart Library Management System (SLMS) meets its functional requirements and operates correctly under different conditions.
+
+Testing mainly focused on verifying:
+
+Book management operations
+
+User actions (Member, Librarian, Administrator)
+
+System constraints (e.g., borrow limit)
+
+Correct implementation of Object-Oriented behaviour
+
+Functional Testing
+Ensures that each feature works as expected:
+
+Borrowing books
+
+Returning books
+
+Reserving books
+
+Adding books
+
+Boundary Testing
+Tests limits of the system:
+
+Borrowing limit (maximum 5 books)
+
+User Interaction Testing
+Tests system behaviour based on user roles:
+
+Member
+
+Librarian
+
+Administrator
+
+Negative Testing
+Tests how the system handles invalid inputs:
+
+Wrong login credentials
+
+Borrowing unavailable books
+
+Functional Testing
+Ensures that each feature works as expected:
+
+Borrowing books
+
+Returning books
+
+Reserving books
+
+Adding books
+
+Boundary Testing
+Tests limits of the system:
+
+Borrowing limit (maximum 5 books)
+
+User Interaction Testing
+Tests system behaviour based on user roles:
+
+Member
+
+Librarian
+
+Administrator
+
+Negative Testing
+Tests how the system handles invalid inputs:
+
+Wrong login credentials
+
+Borrowing unavailable books
